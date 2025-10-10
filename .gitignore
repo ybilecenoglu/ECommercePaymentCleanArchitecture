@@ -1,0 +1,79 @@
+# ----------------------------------------
+# Visual Studio ve IDE Dosyaları
+# ----------------------------------------
+# Visual Studio temporary files
+*.obj
+*.exe
+*.pdb
+*.user
+*.suo
+*.sln.docstates
+
+# Visual Studio'nun yarattığı derleme ve geçici klasörler
+[Bb]in/
+[Dd]ebug/
+[Oo]bj/
+[Rr]elease/
+[Aa]rm/
+[Aa]rm64/
+[Xx]64/
+[Xx]86/
+
+# Test sonuçları klasörleri
+[Tt]est[Rr]esults/
+[Bb]uild[Ll]og.htm
+[Ll]og.txt
+
+# Visual Studio geçici veya gizli klasörleri
+.vs/
+*.vsp
+*.vsn
+*.ncb
+*.aps
+
+# Visual Studio Proje / Çözüm Kullanıcı Ayarları
+*.vssscc
+*.ccproj.*.user
+*.vcxproj.*.user
+*.sln.rider.user
+*.njsproj.user
+
+# NuGet Paket Yönetimi
+# Herkesin kendi makinesinde restore edebileceği paketler
+# Bu klasörler repoya eklenmemeli!
+packages/
+*.nupkg
+.nuget/
+NuGet.Config
+
+# Rider IDE için özel ayarlar
+.idea/
+
+# DotNet tools ve geçici dosyalar
+.tool/
+.dotnet/
+.DS_Store
+
+# ----------------------------------------
+# ASP.NET Core / Web Geliştirme
+# ----------------------------------------
+# Proje yayınlama çıktısı
+/publish
+/out
+
+# Static file compression ve önbellekleme
+wwwroot/
+wwwroot/dist/
+
+# Entity Framework Core migrations yedekleri
+[Mm]igrations/*.designer.cs  # Migrations'ın tasarım dosyalarını hariç tutabiliriz, ancak migrations klasörünün kendisini dahil etmek yaygın bir pratik. 
+# Genellikle migrations klasörü dahil edilir.
+
+# ----------------------------------------
+# Diğer Çevreye Özgü Dosyalar
+# ----------------------------------------
+# Çalışma zamanı yapılandırma dosyaları (hassas bilgileri içerebilir)
+appsettings.*.json # Sadece appsettings.json dosyasını tut, diğerlerini (secrets) hariç tut.
+
+# Kullanıcıya özel ayarlar
+*.userprefs
