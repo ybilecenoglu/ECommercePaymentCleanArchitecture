@@ -1,17 +1,20 @@
 using OdemeSistemi.Core.Abstract;
-using OdemeSistemi.Core.Entities;
+using OdemeSistemi.Core.Enum;
 namespace OdemeSistemi.Business.Services
 {
     public class SiparisService
     {
-        private readonly IOdemeStratejisi _odemeStratejisi;
-        public SiparisService(IOdemeStratejisi odemeStratejisi)
+       
+        private readonly IOdemeStratejisiFabrikasi _odemeStratejisiFabrikasi;
+
+        public SiparisService(IOdemeStratejisiFabrikasi odemeStratejisiFabrikasi)
         {
-            _odemeStratejisi = odemeStratejisi;
+            _odemeStratejisiFabrikasi = odemeStratejisiFabrikasi;
         }
-        public bool OdemeIslemiBaslat(Siparis siparis)
+        public IOdemeStratejisi OdemeIslemiBaslat(OdemeTipi odemeTipi)
         {
-           return _odemeStratejisi.OdemeYap(siparis.Tutar);
+            var odeme_stratejisi_fabrikasi =  _odemeStratejisiFabrikasi.GetOdemeStratejisi(odemeTipi);
+            return odeme_stratejisi_fabrikasi;
         }
     }
 }

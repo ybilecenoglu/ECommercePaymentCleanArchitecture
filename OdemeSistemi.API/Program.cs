@@ -8,12 +8,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-//Strateji(IOdemeStratejisi) kaydý.Transient: Her talepte yeni bir nesne oluþturulur.
-// Bu, iþ mantýðýnýn esnekliðini korur.
-builder.Services.AddTransient<IOdemeStratejisi, KrediKartiOdeme>();
-//Ýþ Servisi (SiparisService) kaydý. Scoped: Her Http isteði için bir kez oluþturur.
-//Kurumsal servisler için sýkça tercih edilir.
-builder.Services.AddScoped<SiparisService>();
+
+builder.Services.AddTransient<KrediKartiOdeme>(); //Her talepte yeni bir nesne oluþturulur. Bu, iþ mantýðýnýn esnekliðini korur.
+builder.Services.AddTransient<EftOdeme>(); // Her talepte yeni bir nesne oluþturulur. Bu, iþ mantýðýnýn esnekliðini korur.
+
+builder.Services.AddScoped<IOdemeStratejisiFabrikasi, OdemeStratejisiFabrikasi>(); //Her Http isteði için bir kez oluþturur.kurumsal servisler için sýkça tercih edilir.
+builder.Services.AddScoped<SiparisService>(); //Her Http isteði için bir kez oluþturur.kurumsal servisler için sýkça tercih edilir.
+
 // Controller'larý ve diðer API servislerini ekle
 builder.Services.AddControllers();
 
