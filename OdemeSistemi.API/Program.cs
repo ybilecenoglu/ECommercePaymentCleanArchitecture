@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using OdemeSistemi.Business.Services;
 using OdemeSistemi.Core.Abstract;
 using OdemeSistemi.Data.Concrate;
+using OdemeSistemi.Core.Concrate;
 using System.Runtime.ConstrainedExecution;
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,16 +10,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddTransient<KrediKartiOdeme>(); //Her talepte yeni bir nesne oluþturulur. Bu, iþ mantýðýnýn esnekliðini korur.
-builder.Services.AddTransient<EftOdeme>(); // Her talepte yeni bir nesne oluþturulur. Bu, iþ mantýðýnýn esnekliðini korur.
+builder.Services.AddTransient<KrediKartiOdeme>(); //Her talepte yeni bir nesne oluï¿½turulur. Bu, iï¿½ mantï¿½ï¿½ï¿½nï¿½n esnekliï¿½ini korur.
+builder.Services.AddTransient<EftOdeme>(); // Her talepte yeni bir nesne oluï¿½turulur. Bu, iï¿½ mantï¿½ï¿½ï¿½nï¿½n esnekliï¿½ini korur.
 
-builder.Services.AddScoped<IOdemeStratejisiFabrikasi, OdemeStratejisiFabrikasi>(); //Her Http isteði için bir kez oluþturur.kurumsal servisler için sýkça tercih edilir.
-builder.Services.AddScoped<SiparisService>(); //Her Http isteði için bir kez oluþturur.kurumsal servisler için sýkça tercih edilir.
 
-// Controller'larý ve diðer API servislerini ekle
+builder.Services.AddScoped<IOdemeStratejisiFabrikasi, OdemeStratejisiFabrikasi>(); //Her Http isteï¿½i iï¿½in bir kez oluï¿½turur.kurumsal servisler iï¿½in sï¿½kï¿½a tercih edilir.
+builder.Services.AddScoped<SiparisService>(); //Her Http isteï¿½i iï¿½in bir kez oluï¿½turur.kurumsal servisler iï¿½in sï¿½kï¿½a tercih edilir.
+
+// Controller'larï¿½ ve diï¿½er API servislerini ekle
 builder.Services.AddControllers();
 
-// Swagger/OpenAPI desteði (Opsiyonel ama iyi bir pratik)
+// Swagger/OpenAPI desteï¿½i (Opsiyonel ama iyi bir pratik)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
@@ -27,14 +29,14 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(); // Bu, swagger adresinde UI'ý gösterir.
+    app.UseSwaggerUI(); // Bu, swagger adresinde UI'ï¿½ gï¿½sterir.
     app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-//Controller'larý haritala
+//Controller'larï¿½ haritala
 app.MapControllers();
 app.Run();
 

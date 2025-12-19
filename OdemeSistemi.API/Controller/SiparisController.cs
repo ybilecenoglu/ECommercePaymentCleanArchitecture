@@ -2,6 +2,7 @@
 using OdemeSistemi.Business.Services;
 using OdemeSistemi.Core.Entities;
 using OdemeSistemi.Core.Enum;
+using OdemeSistemi.Core.Concrate;
 
 namespace OdemeSistemi.API.Controller
 {
@@ -28,20 +29,28 @@ namespace OdemeSistemi.API.Controller
             {
                 return BadRequest(new { Message = "Ödeme yöntemi bulunamadı." });
             }
-            
             var odeme_stratejisi = _siparisService.OdemeIslemiBaslat(odemeTipi);
+           
             var sonuc = odeme_stratejisi.OdemeYap(siparis.Tutar);
             if (sonuc)
             {
-                Console.WriteLine("API: Sipariş başarıyla işlendi.");
-                return Ok(new { Message = $"Ödeme başarılı ({odemeTipi})", Tutar = siparis.Tutar });
+                return Ok(new {Message =$"Ödeme başarılı ({odemeTipi})", Tutar = siparis.Tutar });
             }
             else
-            {
-                Console.WriteLine("API: Ödeme başarısız oldu.");
-                //400 Bad request veya uygun bir hata kodu döndürülür.
                 return BadRequest(new { Message = "Ödeme işlemi başarısız oldu" });
-            }
+            
+            // var sonuc = odeme_stratejisi.OdemeYap(siparis.Tutar);
+            // if (sonuc)
+            // {
+            //     Console.WriteLine("API: Sipariş başarıyla işlendi.");
+            //     return Ok(new { Message = $"Ödeme başarılı ({odemeTipi})", Tutar = siparis.Tutar });
+            // }
+            // else
+            // {
+            //     Console.WriteLine("API: Ödeme başarısız oldu.");
+            //     //400 Bad request veya uygun bir hata kodu döndürülür.
+            //     return BadRequest(new { Message = "Ödeme işlemi başarısız oldu" });
+            // }
             
         }
     }
